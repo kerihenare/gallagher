@@ -35,12 +35,10 @@ module.exports = function gallagher(parties) {
 
   return Math.sqrt(_.chain(parties)
     .map(function(party) {
-      return (party.votes / votes) - (party.seats / seats);
+      return Math.pow((100 * party.votes / votes) - (100 * party.seats / seats), 2);
     })
     .reduce(function(total, value) {
-      return total + Math.pow(value * 100, 2);
+      return total + value;
     }, 0)
-    .divide(2)
-    .value());
-
+    .value() / 2);
 };
