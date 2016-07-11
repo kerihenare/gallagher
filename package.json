@@ -1,0 +1,35 @@
+{
+  "name": "gallagher",
+  "version": "1.0.0",
+  "description": "Calculates the Gallagher Index for an election result.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kerihenare/gallagher"
+  },
+  "keywords": [
+    "gallagher",
+    "gallagher-index",
+    "mmp",
+    "voting",
+    "mixed",
+    "member",
+    "proportional",
+    "formula"
+  ],
+  "author": "Keri Henare <keri@henare.co.nz>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kerihenare/gallagher/issues"
+  },
+  "homepage": "https://github.com/kerihenare/gallagher#readme",
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
+  },
+  "dependencies": {
+    "lodash": "^4.13.1"
+  }
+}
