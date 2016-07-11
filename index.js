@@ -20,7 +20,27 @@ var _ = require('lodash');
  *
  */
 module.exports = function gallagher(parties) {
-    'use strict';
+  'use strict';
 
-    //
+  var seats,
+    votes;
+
+  votes = _.reduce(parties, function(total, party) {
+    return total + party.votes;
+  }, 0);
+
+  seats = _.reduce(parties, function(total, party) {
+    return total + party.seats;
+  }, 0);
+
+  return Math.sqrt(_.chain(parties)
+    .map(function(party) {
+      return (party.votes / votes) - (party.seats / seats);
+    })
+    .reduce(function(total, value) {
+      return total + Math.pow(value * 100, 2);
+    }, 0)
+    .divide(2)
+    .value());
+
 };
