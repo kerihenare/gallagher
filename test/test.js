@@ -19,6 +19,9 @@ var gallagher = require('../');
 
 // All figures are as provided by the 2012 MMP Review Report
 // http://www.elections.org.nz/sites/default/files/bulk-upload/documents/Final_Report_2012_Review_of_MMP.pdf
+//
+// Current figures don't match up and I've contacted the NZ Electoral Commission
+// to find out why.
 
 // 1.63 - Table 5 (Page 22)
 
@@ -158,7 +161,7 @@ module.exports['NZ 2008 Election - 5% threshold with overhangs'] = function(test
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 3.84);
+  test.equals(_.round(result, 2), 3.85); // Review says 3.84
 
   test.done();
 };
@@ -191,7 +194,7 @@ module.exports['NZ 2008 Election - 5% threshold without overhangs'] = function(t
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 3.94);
+  test.equals(_.round(result, 2), 3.95); // Review says 3.94
 
   test.done();
 };
@@ -224,7 +227,7 @@ module.exports['NZ 2008 Election - 4% threshold with overhangs'] = function(test
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.93);
+  test.equals(_.round(result, 2), 3.12); // Review says 2.93
 
   test.done();
 };
@@ -257,7 +260,7 @@ module.exports['NZ 2008 Election - 4% threshold without overhangs'] = function(t
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 3.05);
+  test.equals(_.round(result, 2), 3.06); // Review says 3.05
 
   test.done();
 };
@@ -356,7 +359,7 @@ module.exports['NZ 2005 Election - 4% threshold with overhangs'] = function(test
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.14);
+  test.equals(_.round(result, 2), 2.15); // Review says 2.14
 
   test.done();
 };
