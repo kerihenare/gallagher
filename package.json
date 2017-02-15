@@ -1,15 +1,10 @@
 {
   "name": "gallagher",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Calculates the Gallagher Index for an election result.",
-  "main": "index.js",
-  "scripts": {
-    "test": "nodeunit test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kerihenare/gallagher"
-  },
+  "author": "Keri Henare <keri@henare.co.nz>",
+  "license": "MIT",
+  "main": "lib",
   "keywords": [
     "gallagher",
     "gallagher-index",
@@ -20,16 +15,19 @@
     "proportional",
     "formula"
   ],
-  "author": "Keri Henare <keri@henare.co.nz>",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kerihenare/gallagher"
+  },
   "bugs": {
     "url": "https://github.com/kerihenare/gallagher/issues"
   },
   "homepage": "https://github.com/kerihenare/gallagher#readme",
-  "devDependencies": {
-    "nodeunit": "^0.9.1"
+  "scripts": {
+    "test": "nodeunit test"
   },
-  "dependencies": {
-    "lodash": "^4.13.1"
-  }
+  "devDependencies": {
+    "nodeunit": "^0.11.0"
+  },
+  "dependencies": {}
 }

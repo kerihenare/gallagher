@@ -1,27 +1,44 @@
 /**
- * Copyright (c) 2016, Keri Henare <keri@henare.co.nz>
+ * MIT License
  *
- * Permission to use, copy, modify, and/or distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
+ *  Copyright (c) 2016 Keri Henare <keri@henare.co.nz>
  *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
-var _ = require('lodash');
-var gallagher = require('../');
+var gallagher = require('./../lib');
 
-// All figures are as provided by the 2012 MMP Review Report
-// http://www.elections.org.nz/sites/default/files/bulk-upload/documents/Final_Report_2012_Review_of_MMP.pdf
-//
-// Current figures don't match up and I've contacted the NZ Electoral Commission
-// to find out why.
+/**
+ * Round a number accurately to the given number of decimal places
+ * http://www.jacklmoore.com/notes/rounding-in-javascript/
+ *
+ * @param  {Number} value    The value to be rounded
+ * @param  {Number} decimals The number of decimal places (Integer)
+ * @return {Number}          The resultant rounded number
+ */
+function round(value, decimals) {
+  return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
+
+// All figures are as provided by the data behind the 2012 MMP Review Report
+// 2008 figures haven't been used as they are incorrect in the report;
+// https://fyi.org.nz/request/4268/response/14301/attach/2/OIA%20Request%2015.2016.pdf
 
 // 1.63 - Table 5 (Page 22)
 
@@ -30,24 +47,24 @@ module.exports['NZ 2011 Election - 5% threshold with overhangs'] = function(test
     result;
 
   parties = [
-    { "votes": 1058636, seats: 59 },
-    { "votes": 614937, seats: 34 },
-    { "votes": 247372, seats: 14 },
-    { "votes": 147544, seats: 8 },
-    { "votes": 59237, seats: 0 },
-    { "votes": 31982, seats: 3 },
-    { "votes": 24168, seats: 1 },
-    { "votes": 23889, seats: 1 },
-    { "votes": 13443, seats: 1 },
-    { "votes": 11738, seats: 0 },
-    { "votes": 1714, seats: 0 },
-    { "votes": 1595, seats: 0 },
-    { "votes": 1209, seats: 0 }
+    { votes: 1058636, seats: 59 },
+    { votes: 614937, seats: 34 },
+    { votes: 247372, seats: 14 },
+    { votes: 147544, seats: 8 },
+    { votes: 59237, seats: 0 },
+    { votes: 31982, seats: 3 },
+    { votes: 24168, seats: 1 },
+    { votes: 23889, seats: 1 },
+    { votes: 13443, seats: 1 },
+    { votes: 11738, seats: 0 },
+    { votes: 1714, seats: 0 },
+    { votes: 1595, seats: 0 },
+    { votes: 1209, seats: 0 }
   ];
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.38);
+  test.equals(round(result, 3), 2.378);
 
   test.done();
 };
@@ -57,24 +74,24 @@ module.exports['NZ 2011 Election - 5% threshold without overhangs'] = function(t
     result;
 
   parties = [
-    { "votes": 1058636, seats: 58 },
-    { "votes": 614937, seats: 34 },
-    { "votes": 247372, seats: 14 },
-    { "votes": 147544, seats: 8 },
-    { "votes": 59237, seats: 0 },
-    { "votes": 31982, seats: 3 },
-    { "votes": 24168, seats: 1 },
-    { "votes": 23889, seats: 1 },
-    { "votes": 13443, seats: 1 },
-    { "votes": 11738, seats: 0 },
-    { "votes": 1714, seats: 0 },
-    { "votes": 1595, seats: 0 },
-    { "votes": 1209, seats: 0 }
+    { votes: 1058636, seats: 58 },
+    { votes: 614937, seats: 34 },
+    { votes: 247372, seats: 14 },
+    { votes: 147544, seats: 8 },
+    { votes: 59237, seats: 0 },
+    { votes: 31982, seats: 3 },
+    { votes: 24168, seats: 1 },
+    { votes: 23889, seats: 1 },
+    { votes: 13443, seats: 1 },
+    { votes: 11738, seats: 0 },
+    { votes: 1714, seats: 0 },
+    { votes: 1595, seats: 0 },
+    { votes: 1209, seats: 0 }
   ];
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.32);
+  test.equals(round(result, 3), 2.319);
 
   test.done();
 };
@@ -84,24 +101,24 @@ module.exports['NZ 2011 Election - 4% threshold with overhangs'] = function(test
     result;
 
   parties = [
-    { "votes": 1058636, seats: 59 },
-    { "votes": 614937, seats: 34 },
-    { "votes": 247372, seats: 14 },
-    { "votes": 147544, seats: 8 },
-    { "votes": 59237, seats: 0 },
-    { "votes": 31982, seats: 3 },
-    { "votes": 24168, seats: 1 },
-    { "votes": 23889, seats: 1 },
-    { "votes": 13443, seats: 1 },
-    { "votes": 11738, seats: 0 },
-    { "votes": 1714, seats: 0 },
-    { "votes": 1595, seats: 0 },
-    { "votes": 1209, seats: 0 }
+    { votes: 1058636, seats: 59 },
+    { votes: 614937, seats: 34 },
+    { votes: 247372, seats: 14 },
+    { votes: 147544, seats: 8 },
+    { votes: 59237, seats: 0 },
+    { votes: 31982, seats: 3 },
+    { votes: 24168, seats: 1 },
+    { votes: 23889, seats: 1 },
+    { votes: 13443, seats: 1 },
+    { votes: 11738, seats: 0 },
+    { votes: 1714, seats: 0 },
+    { votes: 1595, seats: 0 },
+    { votes: 1209, seats: 0 }
   ];
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.38);
+  test.equals(round(result, 3), 2.378);
 
   test.done();
 };
@@ -111,156 +128,24 @@ module.exports['NZ 2011 Election - 4% threshold without overhangs'] = function(t
     result;
 
   parties = [
-    { "votes": 1058636, seats: 58 },
-    { "votes": 614937, seats: 34 },
-    { "votes": 247372, seats: 14 },
-    { "votes": 147544, seats: 8 },
-    { "votes": 59237, seats: 0 },
-    { "votes": 31982, seats: 3 },
-    { "votes": 24168, seats: 1 },
-    { "votes": 23889, seats: 1 },
-    { "votes": 13443, seats: 1 },
-    { "votes": 11738, seats: 0 },
-    { "votes": 1714, seats: 0 },
-    { "votes": 1595, seats: 0 },
-    { "votes": 1209, seats: 0 }
+    { votes: 1058636, seats: 58 },
+    { votes: 614937, seats: 34 },
+    { votes: 247372, seats: 14 },
+    { votes: 147544, seats: 8 },
+    { votes: 59237, seats: 0 },
+    { votes: 31982, seats: 3 },
+    { votes: 24168, seats: 1 },
+    { votes: 23889, seats: 1 },
+    { votes: 13443, seats: 1 },
+    { votes: 11738, seats: 0 },
+    { votes: 1714, seats: 0 },
+    { votes: 1595, seats: 0 },
+    { votes: 1209, seats: 0 }
   ];
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.32);
-
-  test.done();
-};
-
-module.exports['NZ 2008 Election - 5% threshold with overhangs'] = function(test) {
-  var parties,
-    result;
-
-  parties = [
-    { votes: 1053398, seats: 58 },
-    { votes: 796880, seats: 43 },
-    { votes: 157613, seats: 9 },
-    { votes: 95356, seats: 0 },
-    { votes: 85496, seats: 5 },
-    { votes: 55980, seats: 5 },
-    { votes: 21241, seats: 1 },
-    { votes: 20497, seats: 1 },
-    { votes: 13016, seats: 0 },
-    { votes: 12755, seats: 0 },
-    { votes: 9515, seats: 0 },
-    { votes: 9640, seats: 0 },
-    { votes: 8176, seats: 0 },
-    { votes: 1909, seats: 0 },
-    { votes: 1208, seats: 0 },
-    { votes: 1176, seats: 0 },
-    { votes: 932, seats: 0 },
-    { votes: 465, seats: 0 },
-    { votes: 313, seats: 0 }
-  ];
-
-  result = gallagher(parties);
-
-  test.equals(_.round(result, 2), 3.85); // Review says 3.84
-
-  test.done();
-};
-
-module.exports['NZ 2008 Election - 5% threshold without overhangs'] = function(test) {
-  var parties,
-    result;
-
-  parties = [
-    { votes: 1053398, seats: 57 },
-    { votes: 796880, seats: 43 },
-    { votes: 157613, seats: 8 },
-    { votes: 95356, seats: 0 },
-    { votes: 85496, seats: 5 },
-    { votes: 55980, seats: 5 },
-    { votes: 21241, seats: 1 },
-    { votes: 20497, seats: 1 },
-    { votes: 13016, seats: 0 },
-    { votes: 12755, seats: 0 },
-    { votes: 9515, seats: 0 },
-    { votes: 9640, seats: 0 },
-    { votes: 8176, seats: 0 },
-    { votes: 1909, seats: 0 },
-    { votes: 1208, seats: 0 },
-    { votes: 1176, seats: 0 },
-    { votes: 932, seats: 0 },
-    { votes: 465, seats: 0 },
-    { votes: 313, seats: 0 }
-  ];
-
-  result = gallagher(parties);
-
-  test.equals(_.round(result, 2), 3.95); // Review says 3.94
-
-  test.done();
-};
-
-module.exports['NZ 2008 Election - 4% threshold with overhangs'] = function(test) {
-  var parties,
-    result;
-
-  parties = [
-    { votes: 1053398, seats: 60 },
-    { votes: 796880, seats: 46 },
-    { votes: 157613, seats: 9 },
-    { votes: 95356, seats: 5 },
-    { votes: 85496, seats: 1 },
-    { votes: 55980, seats: 5 },
-    { votes: 21241, seats: 1 },
-    { votes: 20497, seats: 1 },
-    { votes: 13016, seats: 0 },
-    { votes: 12755, seats: 0 },
-    { votes: 9515, seats: 0 },
-    { votes: 9640, seats: 0 },
-    { votes: 8176, seats: 0 },
-    { votes: 1909, seats: 0 },
-    { votes: 1208, seats: 0 },
-    { votes: 1176, seats: 0 },
-    { votes: 932, seats: 0 },
-    { votes: 465, seats: 0 },
-    { votes: 313, seats: 0 }
-  ];
-
-  result = gallagher(parties);
-
-  test.equals(_.round(result, 2), 3.12); // Review says 2.93
-
-  test.done();
-};
-
-module.exports['NZ 2008 Election - 4% threshold without overhangs'] = function(test) {
-  var parties,
-    result;
-
-  parties = [
-    { votes: 1053398, seats: 56 },
-    { votes: 796880, seats: 43 },
-    { votes: 157613, seats: 8 },
-    { votes: 95356, seats: 5 },
-    { votes: 85496, seats: 1 },
-    { votes: 55980, seats: 5 },
-    { votes: 21241, seats: 1 },
-    { votes: 20497, seats: 1 },
-    { votes: 13016, seats: 0 },
-    { votes: 12755, seats: 0 },
-    { votes: 9515, seats: 0 },
-    { votes: 9640, seats: 0 },
-    { votes: 8176, seats: 0 },
-    { votes: 1909, seats: 0 },
-    { votes: 1208, seats: 0 },
-    { votes: 1176, seats: 0 },
-    { votes: 932, seats: 0 },
-    { votes: 465, seats: 0 },
-    { votes: 313, seats: 0 }
-  ];
-
-  result = gallagher(parties);
-
-  test.equals(_.round(result, 2), 3.06); // Review says 3.05
+  test.equals(round(result, 3), 2.319);
 
   test.done();
 };
@@ -293,7 +178,7 @@ module.exports['NZ 2005 Election - 5% threshold with overhangs'] = function(test
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 1.13);
+  test.equals(round(result, 3), 1.128);
 
   test.done();
 };
@@ -326,7 +211,7 @@ module.exports['NZ 2005 Election - 5% threshold without overhangs'] = function(t
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 1.13);
+  test.equals(round(result, 3), 1.127);
 
   test.done();
 };
@@ -336,9 +221,9 @@ module.exports['NZ 2005 Election - 4% threshold with overhangs'] = function(test
     result;
 
   parties = [
-    { votes: 935319, seats: 54 },
-    { votes: 889813, seats: 51 },
-    { votes: 130115, seats: 8 },
+    { votes: 935319, seats: 51 },
+    { votes: 889813, seats: 49 },
+    { votes: 130115, seats: 7 },
     { votes: 120521, seats: 7 },
     { votes: 48263, seats: 4 },
     { votes: 60860, seats: 1 },
@@ -359,7 +244,7 @@ module.exports['NZ 2005 Election - 4% threshold with overhangs'] = function(test
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.15); // Review says 2.14
+  test.equals(round(result, 3), 2.142);
 
   test.done();
 };
@@ -392,7 +277,7 @@ module.exports['NZ 2005 Election - 4% threshold without overhangs'] = function(t
 
   result = gallagher(parties);
 
-  test.equals(_.round(result, 2), 2.12);
+  test.equals(round(result, 3), 2.119);
 
   test.done();
 };
