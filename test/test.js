@@ -32,7 +32,7 @@ var gallagher = require('./../lib');
  * @param  {Number} decimals The number of decimal places (Integer)
  * @return {Number}          The resultant rounded number
  */
-function round(value, decimals) {
+function round (value, decimals) {
   return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
 }
 
@@ -42,7 +42,7 @@ function round(value, decimals) {
 
 // 1.63 - Table 5 (Page 22)
 
-module.exports['NZ 2011 Election - 5% threshold with overhangs'] = function(test) {
+module.exports['NZ 2011 Election - 5% threshold with overhangs'] = function (test) {
   var parties,
     result;
 
@@ -69,7 +69,7 @@ module.exports['NZ 2011 Election - 5% threshold with overhangs'] = function(test
   test.done();
 };
 
-module.exports['NZ 2011 Election - 5% threshold without overhangs'] = function(test) {
+module.exports['NZ 2011 Election - 5% threshold without overhangs'] = function (test) {
   var parties,
     result;
 
@@ -96,7 +96,7 @@ module.exports['NZ 2011 Election - 5% threshold without overhangs'] = function(t
   test.done();
 };
 
-module.exports['NZ 2011 Election - 4% threshold with overhangs'] = function(test) {
+module.exports['NZ 2011 Election - 4% threshold with overhangs'] = function (test) {
   var parties,
     result;
 
@@ -123,7 +123,7 @@ module.exports['NZ 2011 Election - 4% threshold with overhangs'] = function(test
   test.done();
 };
 
-module.exports['NZ 2011 Election - 4% threshold without overhangs'] = function(test) {
+module.exports['NZ 2011 Election - 4% threshold without overhangs'] = function (test) {
   var parties,
     result;
 
@@ -150,7 +150,7 @@ module.exports['NZ 2011 Election - 4% threshold without overhangs'] = function(t
   test.done();
 };
 
-module.exports['NZ 2005 Election - 5% threshold with overhangs'] = function(test) {
+module.exports['NZ 2005 Election - 5% threshold with overhangs'] = function (test) {
   var parties,
     result;
 
@@ -183,7 +183,7 @@ module.exports['NZ 2005 Election - 5% threshold with overhangs'] = function(test
   test.done();
 };
 
-module.exports['NZ 2005 Election - 5% threshold without overhangs'] = function(test) {
+module.exports['NZ 2005 Election - 5% threshold without overhangs'] = function (test) {
   var parties,
     result;
 
@@ -216,7 +216,7 @@ module.exports['NZ 2005 Election - 5% threshold without overhangs'] = function(t
   test.done();
 };
 
-module.exports['NZ 2005 Election - 4% threshold with overhangs'] = function(test) {
+module.exports['NZ 2005 Election - 4% threshold with overhangs'] = function (test) {
   var parties,
     result;
 
@@ -249,7 +249,7 @@ module.exports['NZ 2005 Election - 4% threshold with overhangs'] = function(test
   test.done();
 };
 
-module.exports['NZ 2005 Election - 4% threshold without overhangs'] = function(test) {
+module.exports['NZ 2005 Election - 4% threshold without overhangs'] = function (test) {
   var parties,
     result;
 

@@ -1,6 +1,6 @@
 {
   "name": "gallagher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculates the Gallagher Index for an election result.",
   "author": "Keri Henare <keri@henare.co.nz>",
   "license": "MIT",
@@ -23,11 +23,21 @@
     "url": "https://github.com/kerihenare/gallagher/issues"
   },
   "homepage": "https://github.com/kerihenare/gallagher#readme",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/"
+  ],
   "scripts": {
-    "test": "nodeunit test"
+    "lint": "semistandard lib/*.js test/*.js",
+    "test": "npm run lint && nodeunit test"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.0"
+    "nodeunit": "^0.11.0",
+    "semistandard": "^9.2.1"
   },
   "dependencies": {}
 }
