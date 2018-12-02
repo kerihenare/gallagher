@@ -1,10 +1,11 @@
 {
   "name": "gallagher",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Calculates the Gallagher Index for an election result.",
   "author": "Keri Henare <keri@henare.co.nz>",
   "license": "MIT",
-  "main": "lib",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "keywords": [
     "gallagher",
     "gallagher-index",
@@ -29,15 +30,16 @@
   "files": [
     "LICENSE",
     "README.md",
-    "lib/"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
     "lint": "semistandard lib/*.js test/*.js",
     "test": "npm run lint && nodeunit test"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.0",
-    "semistandard": "^9.2.1"
+    "nodeunit": "^0.11.3",
+    "semistandard": "^13.0.1"
   },
   "dependencies": {}
 }

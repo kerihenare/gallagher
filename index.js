@@ -31,21 +31,11 @@
 module.exports = function calculateGallagherIndex (parties) {
   'use strict';
 
-  var votes = parties.reduce(function (total, party) {
-    return total + party.votes;
-  }, 0);
+  const votes = parties.reduce((total, party) => total + party.votes, 0);
+  const seats = parties.reduce((total, party) => total + party.seats, 0);
+  const rows = parties.map(
+    (party) => Math.pow((100 * party.votes / votes) - (100 * party.seats / seats), 2)
+  );
 
-  var seats = parties.reduce(function (total, party) {
-    return total + party.seats;
-  }, 0);
-
-  return Math.sqrt(
-    0.5 *
-    parties
-      .map(function (party) {
-        return Math.pow((100 * party.votes / votes) - (100 * party.seats / seats), 2);
-      })
-      .reduce(function (total, value) {
-        return total + value;
-      }, 0));
+  return Math.sqrt(0.5 * rows.reduce((total, value) => total + value, 0));
 };
